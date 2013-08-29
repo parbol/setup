@@ -7,10 +7,10 @@ fi
 
 source $CMSSW_BASE/src/LatinosSetup/Functions.sh
 
-if [[ "$CMSSW_VERSION" == CMSSW_4_2_8* ]]; then
+if [[ "$CMSSW_VERSION" == CMSSW_5_3_9* ]]; then
 
     echo "======================================="
-    echo "running with $CMSSW_VERSION - this is a 7 TeV setup!"
+    echo "running with $CMSSW_VERSION - this is an 8 TeV setup!"
     echo "Current Time:" $(date)
     echo "checking out additional repositories; this could take a while ..."
     echo "======================================="
@@ -18,46 +18,55 @@ if [[ "$CMSSW_VERSION" == CMSSW_4_2_8* ]]; then
     echo " - Basic Code"
 
     github-addext latinos/WWAnalysis.git WWAnalysis
-    github-addext latinos/HWWAnalysis.git HWWAnalysis
-
-    github-addext latinos/RecoEgamma-ElectronIdentification.git RecoEgamma/ElectronIdentification RecoEgamma-ElectronIdentification-V00-03-30
     (
-	cd RecoEgamma/ElectronIdentification
-	git checkout --quiet RecoEgamma-ElectronIdentification-V00-03-33 python/cutsInCategoriesHZZElectronIdentificationV06_cfi.py
+	cd WWAnalysis
+	rm -r AnalysisStep/data/datacards/finalCards/;
+	rm -r AnalysisStep/data/datacards/HZZ4L/;
     )
+    github-addext latinos/HWWAnalysis.git HWWAnalysis
 
     github-addext latinos/HiggsAnalysis-HiggsToWW2Leptons.git HiggsAnalysis/HiggsToWW2Leptons For2011-October-21st-reload
     github-addext latinos/UserCode-MitPhysics-data-ElectronMVAWeights.git HiggsAnalysis/HiggsToWW2Leptons/data/ElectronMVAWeights HWW_V1
     github-addext latinos/UserCode-sixie-Muon-MuonAnalysisTools.git Muon/MuonAnalysisTools V00-00-10
-    github-addext latinos/UserCode-EGamma-EGammaAnalysisTools.git EGamma/EGammaAnalysisTools V00-00-30-BP42X
+
+    github-addext latinos/UserCode-EGamma-EGammaAnalysisTools.git EGamma/EGammaAnalysisTools V00-00-30
+    (
+	cd EGamma/EGammaAnalysisTools
+	sed 's#EGamma/EGammaAnalysisTools/data/Electrons_BDT#WWAnalysis/AnalysisStep/data/ElectronMVAWeights/Electrons_BDT#g' -i python/electronIdMVAProducer_cfi.py
+	git checkout --quiet V00-01-04 interface/ElectronEnergyRegressionEvaluate.h
+	git checkout --quiet V00-01-04 src/ElectronEnergyRegressionEvaluate.cc
+	git checkout --quiet V00-01-04 plugins/ElectronRegressionEnergyProducer.cc
+    )
+
+    github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V02-06-00
     github-addext latinos/UserCode-EGamma-EgammaCalibratedGsfElectrons.git EgammaCalibratedGsfElectrons Shervin13062012_2012Prompt_and_May23ReReco_and_Summer12MC_smearing_V00
-
-    github-addext latinos/RecoEgamma-EgammaTools.git RecoEgamma/EgammaTools RecoEgamma-EgammaTools-CMSSW_4_2_8
+    github-addext latinos/UserCode-CMG-CMGTools-External.git CMGTools/External V00-03-04
+    github-addext latinos/UserCode-GCerati-DYMvaInCMSSW.git DYMvaInCMSSW V00-00-01
     (
-	cd RecoEgamma/EgammaTools
-	git checkout --quiet RecoEgamma-EgammaTools-CMSSW_5_2_4 src/EcalClusterLocal.cc
-	git checkout --quiet RecoEgamma-EgammaTools-CMSSW_5_2_4 interface/EcalClusterLocal.h
+	cd DYMvaInCMSSW
+	git checkout --quiet master GetDYMVA/data/TMVA_0j_metshift_BDTG.weights.xml
+	git checkout --quiet master GetDYMVA/data/TMVA_1j_metshift_BDTG.weights.xml
     )
+    github-addext latinos/UserCode-pharris-MVAMet pharris/MVAMet V00-01
+    (
+	cd pharris/MVAMet
+	rm src/PHMetAnalysisLinkDef.h
+	rm src/GBRTree.cxx
+	rm src/GBRForest.cxx
+    )
+    github-addext latinos/UserCode-scasasso-MuScleFit-Calibration.git MuScleFit/Calibration muscle_v4_2_0
 
-    github-addext latinos/CondFormats-EgammaObjects.git CondFormats/EgammaObjects CondFormats-EgammaObjects-V00-04-01
-    github-addext latinos/UserCode-sixie-patches-RecoEcal-EgammaCoreTools.git RecoEcal/EgammaCoreTools HZZ4L_HCP2012_42X
-
-    github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V01-13-02
-    github-addext latinos/RecoJets-Configuration.git RecoJets/Configuration RecoJets-Configuration-V02-04-16
-    github-addext latinos/RecoJets-JetAlgorithms.git RecoJets/JetAlgorithms RecoJets-JetAlgorithms-V04-01-00
-    github-addext latinos/RecoJets-JetProducers.git RecoJets/JetProducers RecoJets-JetProducers-V05-05-03
-    github-addext latinos/PhysicsTools-Utilities.git PhysicsTools/Utilities PhysicsTools-Utilities-V08-03-09
-    github-addext latinos/GeneratorInterface-GenFilters.git GeneratorInterface/GenFilters GeneratorInterface-GenFilters-CMSSW_4_2_8_patch7
+    echo " - install PAT V08-09-56";
+    github-addext latinos/DataFormats-PatCandidates.git DataFormats/PatCandidates DataFormats-PatCandidates-V06-05-06-10
+    github-addext latinos/PhysicsTools-PatUtils.git PhysicsTools/PatUtils PhysicsTools-PatUtils-V03-09-28
+    github-addext latinos/DataFormats-CaloRecHit.git DataFormats/CaloRecHit DataFormats-CaloRecHit-V02-05-11
+    github-addext latinos/DataFormats-StdDictionaries.git DataFormats/StdDictionaries DataFormats-StdDictionaries-V00-02-14
+    github-addext latinos/FWCore-GuiBrowsers.git FWCore/GuiBrowsers FWCore-GuiBrowsers-V00-00-70
+    github-addext latinos/RecoMET-METProducers.git RecoMET/METProducers RecoMET-METProducers-V03-03-12-02
+    github-addext latinos/RecoParticleFlow-PFProducer.git RecoParticleFlow/PFProducer RecoParticleFlow-PFProducer-V15-02-06
     
-    github-addext latinos/UserCode-CMG-CMGTools-External.git CMGTools/External V00-02-10
-    github-addext latinos/DataFormats-PatCandidates.git DataFormats/PatCandidates DataFormats-PatCandidates-$CMSSW_VERSION
-    (
-	cd DataFormats/PatCandidates
-	git checkout --quiet d29158e1ba064aa5bcc524dba4e4bc6a1b096c06 src/TriggerObjectStandAlone.cc
-    )
-
-    echo " - Get UserData in pat::PFParticle";
-    github-addext latinos/PhysicsTools-PatAlgos.git PhysicsTools/PatAlgos PhysicsTools-PatAlgos-$CMSSW_VERSION
+    echo " - newer version of the files that add extra functionalities"
+    github-addext latinos/PhysicsTools-PatAlgos.git PhysicsTools/PatAlgos PhysicsTools-PatAlgos-V08-09-56
     (
 	cd PhysicsTools/PatAlgos
 	git checkout --quiet 2c6034a1f342f1286fd2a51eff9062bef79995cf plugins/PATPFParticleProducer.cc
@@ -65,16 +74,23 @@ if [[ "$CMSSW_VERSION" == CMSSW_4_2_8* ]]; then
 	git checkout --quiet 82c8dd0a16a4eac6286eda4a7297cc90ed2a4798 plugins/PATCleaner.cc
     )
 
-    echo " - Stuff for ghost muon cleaning" ;
-    github-addext latinos/DataFormats-MuonReco.git DataFormats/MuonReco DataFormats-MuonReco-U09-00-00-01
+    echo " - For official electron regression code";
+    github-addext latinos/RecoEgamma-EgammaTools.git RecoEgamma/EgammaTools RecoEgamma-EgammaTools-V09-00-01
+    github-addext latinos/EgammaAnalysis-ElectronTools.git EgammaAnalysis/ElectronTools V00-00-08
+
+    echo " - Download regression weight file";
+    wget --quiet -O EgammaAnalysis/ElectronTools/data/eleEnergyRegWeights_WithSubClusters_VApr15.root http://cmsdoc.cern.ch/cms/data/CMSSW/EgammaAnalysis/ElectronTools/data/eleEnergyRegWeights_WithSubClusters_VApr15.root; 
+
+    echo " - adding stuff for ghost muon cleaning"
+    github-addext latinos/MuonAnalysis-MuonAssociators.git MuonAnalysis/MuonAssociators MuonAnalysis-MuonAssociators-V02-03-00
 
     echo " - Stuff to run all the MEs" ;
     github-addext latinos/UserCode-Snowball-Higgs-Higgs_CS_and_Width.git Higgs/Higgs_CS_and_Width V00-03-01
     github-addext latinos/UserCode-HZZ4L_Combination-CombinationPy.git HZZ4L_Combination/CombinationPy MoriondInputsV8
-    github-addext latinos/UserCode-CJLST-ZZMatrixElement-MELA.git ZZMatrixElement/MELA V00-01-26
-    github-addext latinos/UserCode-UFL-ZZMatrixElement-MEKD.git ZZMatrixElement/MEKD V00-01-04
-    github-addext latinos/UserCode-HZZ4l_MEM-ZZMatrixElement-MEMCalculators.git ZZMatrixElement/MEMCalculators V00-00-09
-    
+    github-addext latinos/UserCode-CJLST-ZZMatrixElement-MELA.git ZZMatrixElement/MELA V00-02-03
+    github-addext latinos/UserCode-UFL-ZZMatrixElement-MEKD.git ZZMatrixElement/MEKD V00-02-00
+    github-addext latinos/UserCode-HZZ4l_MEM-ZZMatrixElement-MEMCalculators.git ZZMatrixElement/MEMCalculators V00-00-12
+
     CURDIR=$PWD
     echo " - Need to tar some of the ME folders to ship them when running CRAB -- files stored in WWAnalysis/AnalysisStep/crab";
     cd $CMSSW_BASE/src/Higgs/Higgs_CS_and_Width;
@@ -104,8 +120,8 @@ if [[ "$CMSSW_VERSION" == CMSSW_4_2_8* ]]; then
 else
     echo "======================================="
     echo "You are using release $CMSSW_VERSION which is not supported by this script."
-    echo "This script only supports the 7TeV analysis with CMSSW_4_2_8*."
-    echo "If you intended to setup an 8TeV analysis please switch to the correct branch of the setup repository"
-    echo "using 'cd $CMSSW_BASE/LatinosSetup && git checkout 8TeV"
+    echo "This script only supports the 8TeV analysis with CMSSW_5_3_9*."
+    echo "If you intended to setup a 7TeV analysis please switch to the correct branch of the setup repository"
+    echo "using 'cd $CMSSW_BASE/LatinosSetup && git checkout 7TeV"
     echo "======================================="
 fi;
