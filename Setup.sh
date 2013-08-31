@@ -7,7 +7,7 @@ fi
 
 source $CMSSW_BASE/src/LatinosSetup/Functions.sh
 
-if [[ "$CMSSW_VERSION" == CMSSW_5_3_9* ]]; then
+if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
 
     echo "======================================="
     echo "running with $CMSSW_VERSION - this is an 8 TeV setup!"
@@ -22,6 +22,11 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_9* ]]; then
 	cd WWAnalysis
 	rm -r AnalysisStep/data/datacards/finalCards/;
 	rm -r AnalysisStep/data/datacards/HZZ4L/;
+    rm    TreeModifiers/interface/SuperMELABranchAdder.h;
+    rm    TreeModifiers/src/SuperMELABranchAdder.cc;
+    rm    AnalysisStep/plugins/SkimEvent4LSelector.cc;
+    rm    AnalysisStep/interface/SkimEvent4LSelector.h;
+    rm    AnalysisStep/plugins/SkimEvent4LProducer.cc;
     )
     github-addext latinos/HWWAnalysis.git HWWAnalysis
 
@@ -86,10 +91,10 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_9* ]]; then
 
     echo " - Stuff to run all the MEs" ;
     github-addext latinos/UserCode-Snowball-Higgs-Higgs_CS_and_Width.git Higgs/Higgs_CS_and_Width V00-03-01
-    github-addext latinos/UserCode-HZZ4L_Combination-CombinationPy.git HZZ4L_Combination/CombinationPy MoriondInputsV8
-    github-addext latinos/UserCode-CJLST-ZZMatrixElement-MELA.git ZZMatrixElement/MELA V00-02-03
-    github-addext latinos/UserCode-UFL-ZZMatrixElement-MEKD.git ZZMatrixElement/MEKD V00-02-00
-    github-addext latinos/UserCode-HZZ4l_MEM-ZZMatrixElement-MEMCalculators.git ZZMatrixElement/MEMCalculators V00-00-12
+#     github-addext latinos/UserCode-HZZ4L_Combination-CombinationPy.git HZZ4L_Combination/CombinationPy MoriondInputsV8
+#     github-addext latinos/UserCode-CJLST-ZZMatrixElement-MELA.git ZZMatrixElement/MELA V00-02-03
+#     github-addext latinos/UserCode-UFL-ZZMatrixElement-MEKD.git ZZMatrixElement/MEKD V00-02-00
+#     github-addext latinos/UserCode-HZZ4l_MEM-ZZMatrixElement-MEMCalculators.git ZZMatrixElement/MEMCalculators V00-00-12
 
     CURDIR=$PWD
     echo " - Need to tar some of the ME folders to ship them when running CRAB -- files stored in WWAnalysis/AnalysisStep/crab";
@@ -111,6 +116,10 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_9* ]]; then
     mv Cards.tar.gz $CMSSW_BASE/src/WWAnalysis/AnalysisStep/crab/;
     mv  PDFTables.tar.gz $CMSSW_BASE/src/WWAnalysis/AnalysisStep/crab/;
     cd $CURDIR
+
+    echo " - for FatJet";
+#     github-addext cms-analysis/ElectroWeakAnalysis-VPlusJets.git ElectroWeakAnalysis/VPlusJets
+    github-addext latinos/ElectroWeakAnalysis-VPlusJets.git ElectroWeakAnalysis/VPlusJets 
 
     echo "======================================="
     echo " ... Done.                             "
