@@ -90,7 +90,7 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
     github-addext latinos/MuonAnalysis-MuonAssociators.git MuonAnalysis/MuonAssociators MuonAnalysis-MuonAssociators-V02-03-00
 
     echo " - Stuff to run all the MEs" ;
-    github-addext latinos/UserCode-Snowball-Higgs-Higgs_CS_and_Width.git Higgs/Higgs_CS_and_Width V00-03-01
+    github-addext latinos/UserCode-Snowball-Higgs-Higgs_CS_and_Width.git Higgs/Higgs_CS_and_Width
 #     github-addext latinos/UserCode-HZZ4L_Combination-CombinationPy.git HZZ4L_Combination/CombinationPy MoriondInputsV8
 #     github-addext latinos/UserCode-CJLST-ZZMatrixElement-MELA.git ZZMatrixElement/MELA V00-02-03
 #     github-addext latinos/UserCode-UFL-ZZMatrixElement-MEKD.git ZZMatrixElement/MEKD V00-02-00
