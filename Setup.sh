@@ -45,7 +45,9 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
 
     github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V02-06-00
     github-addext latinos/UserCode-EGamma-EgammaCalibratedGsfElectrons.git EgammaCalibratedGsfElectrons Shervin13062012_2012Prompt_and_May23ReReco_and_Summer12MC_smearing_V00
-    github-addext latinos/UserCode-CMG-CMGTools-External.git CMGTools/External V00-03-04
+#   to be updated to V00-03-04 later
+    github-addext latinos/UserCode-CMG-CMGTools-External.git CMGTools/External V00-00-09
+#     github-addext latinos/UserCode-CMG-CMGTools-External.git CMGTools/External V00-03-04
     github-addext latinos/UserCode-GCerati-DYMvaInCMSSW.git DYMvaInCMSSW V00-00-01
     (
         cd DYMvaInCMSSW
@@ -78,6 +80,8 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
         git checkout --quiet 2c6034a1f342f1286fd2a51eff9062bef79995cf plugins/PATPFParticleProducer.h
         git checkout --quiet 82c8dd0a16a4eac6286eda4a7297cc90ed2a4798 plugins/PATCleaner.cc
     )
+
+    echo " - CommonTools/RecoUtils"
     github-addext latinos/CommonTools-RecoUtils.git CommonTools/RecoUtils V00-01-01
     (
         cp WWAnalysis/Misc/Patches/CommonTools_RecoUtils_src_classes.h_patch          CommonTools/RecoUtils/src/classes.h
