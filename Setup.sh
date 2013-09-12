@@ -17,7 +17,7 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
 
     echo " - Basic Code"
 
-    github-addext latinos/WWAnalysis.git WWAnalysis
+    github-addext latinos/WWAnalysis.git WWAnalysis 8TeV
     (
         cd WWAnalysis
         rm -r AnalysisStep/data/datacards/finalCards/;
