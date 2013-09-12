@@ -17,7 +17,7 @@ if [[ "$CMSSW_VERSION" == CMSSW_4_2_8* ]]; then
 
     echo " - Basic Code"
 
-    github-addext latinos/WWAnalysis.git WWAnalysis
+    github-addext latinos/WWAnalysis.git WWAnalysis 7TeV
     github-addext latinos/HWWAnalysis.git HWWAnalysis
 
     github-addext latinos/RecoEgamma-ElectronIdentification.git RecoEgamma/ElectronIdentification RecoEgamma-ElectronIdentification-V00-03-30
