@@ -20,13 +20,12 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
     github-addext latinos/WWAnalysis.git WWAnalysis 8TeV
     (
         cd WWAnalysis
-        rm -r AnalysisStep/data/datacards/finalCards/;
-        rm -r AnalysisStep/data/datacards/HZZ4L/;
-        rm    TreeModifiers/interface/SuperMELABranchAdder.h;
-        rm    TreeModifiers/src/SuperMELABranchAdder.cc;
-        rm    AnalysisStep/plugins/SkimEvent4LSelector.cc;
-        rm    AnalysisStep/interface/SkimEvent4LSelector.h;
-        rm    AnalysisStep/plugins/SkimEvent4LProducer.cc;
+        rm -r AnalysisStep/data/datacards/finalCards/
+        rm -r AnalysisStep/data/datacards/HZZ4L/
+        rm    TreeModifiers/interface/SuperMELABranchAdder.h
+        rm    TreeModifiers/src/SuperMELABranchAdder.cc
+        rm    AnalysisStep/plugins/SkimEvent4LSelector.cc
+        rm    AnalysisStep/plugins/SkimEvent4LProducer.cc
     )
     github-addext latinos/HWWAnalysis.git HWWAnalysis
 
