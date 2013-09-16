@@ -44,9 +44,7 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
 
     github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V02-06-00
     github-addext latinos/UserCode-EGamma-EgammaCalibratedGsfElectrons.git EgammaCalibratedGsfElectrons Shervin13062012_2012Prompt_and_May23ReReco_and_Summer12MC_smearing_V00
-#   to be updated to V00-03-04 later
     github-addext latinos/UserCode-CMG-CMGTools-External.git CMGTools/External V00-00-09
-#     github-addext latinos/UserCode-CMG-CMGTools-External.git CMGTools/External V00-03-04
     github-addext latinos/UserCode-GCerati-DYMvaInCMSSW.git DYMvaInCMSSW V00-00-01
     (
         cd DYMvaInCMSSW
@@ -81,7 +79,7 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
     )
 
     echo " - CommonTools/RecoUtils"
-    github-addext latinos/CommonTools-RecoUtils.git CommonTools/RecoUtils V00-01-01
+    github-addext latinos/CommonTools-RecoUtils.git CommonTools/RecoUtils CommonTools-RecoUtils-V00-01-01
     (
         cp WWAnalysis/Misc/Patches/CommonTools_RecoUtils_src_classes.h_patch          CommonTools/RecoUtils/src/classes.h
         cp WWAnalysis/Misc/Patches/CommonTools_RecoUtils_src_classes_def.xml_patch    CommonTools/RecoUtils/src/classes_def.xml
