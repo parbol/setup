@@ -103,20 +103,6 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
     cd $CMSSW_BASE/src/Higgs/Higgs_CS_and_Width;
     tar czf txtFiles.tar.gz txtFiles;
     mv txtFiles.tar.gz $CMSSW_BASE/src/WWAnalysis/AnalysisStep/crab/;
-    cd $CMSSW_BASE/src/HZZ4L_Combination/CombinationPy;
-    mkdir tmp;
-    cd tmp;
-    mkdir CreateDatacards;
-    cp -r ../CreateDatacards/SM_inputs* ./CreateDatacards;
-    tar czf CreateDatacards.tar.gz CreateDatacards;
-    cd ../;
-    mv tmp/CreateDatacards.tar.gz $CMSSW_BASE/src/WWAnalysis/AnalysisStep/crab/;
-    rm -r tmp;
-    cd $CMSSW_BASE/src/ZZMatrixElement/MEKD/src;
-    tar czf Cards.tar.gz Cards;
-    tar czf PDFTables.tar.gz PDFTables;
-    mv Cards.tar.gz $CMSSW_BASE/src/WWAnalysis/AnalysisStep/crab/;
-    mv  PDFTables.tar.gz $CMSSW_BASE/src/WWAnalysis/AnalysisStep/crab/;
     cd $CURDIR
 
     echo " - for FatJet";
