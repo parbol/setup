@@ -42,8 +42,12 @@ And run the setup script
 # Commit Changes
 
 Make sure you are in the right repository/folder (for WWAnalysis or HWWAnalysis)
+
 Do a git commit (or maybe git add first; see general git infos)
+
 Make sure everything is how you wanted it (e.g. look at the commit history)
+
 Do a git push to push the changes to GitHub
+
 If you want to put major changes in externals, please ask for the best way to do this 
 
