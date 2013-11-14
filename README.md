@@ -27,7 +27,11 @@ Exactly the same as for CVS (use version 4_2_8 for 7TeV analyses and 5_3_9 for 8
 Clone the setup repository from GitHub (replace Z by 7 or 8 and make sure your SSH keys are setup at GitHub otherwise you'll have to type your password many times) 
 
     git clone --branch ZTeV git@github.com:latinos/setup.git LatinosSetup
+
+For example:
+
     git clone --branch 7TeV git@github.com:latinos/setup.git LatinosSetup
+
     git clone --branch 8TeV git@github.com:latinos/setup.git LatinosSetup
 
 And run the setup script 
