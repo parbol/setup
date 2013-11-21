@@ -38,6 +38,10 @@ And run the setup script
 
     source LatinosSetup/Setup.sh
 
+For datacard maker setup only: 
+
+    source LatinosSetup/SetupShapeOnly.sh
+
 
 # Commit Changes
 
