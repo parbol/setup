@@ -34,6 +34,8 @@ For example:
 
     git clone --branch 8TeV git@github.com:latinos/setup.git LatinosSetup
 
+    git clone --branch 13TeV git@github.com:latinos/setup.git LatinosSetup
+
 And run the setup script 
 
     source LatinosSetup/Setup.sh
