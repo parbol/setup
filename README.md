@@ -63,13 +63,17 @@ If you want to put major changes in externals, please ask for the best way to do
     cd src/WWAnalysis/SkimStep/test
     cmsRun latinosYieldSkim.py print inputFiles=file://data/amassiro/CMSSWRoot/Summer12/WWJetsTo2L2Nu_TuneZ2star_8TeV-madgraph-tauola/28DCA073-84D4-E111-A8D0-F04DA23BCE4C.root isMC=True globalTag=GR_R_52_V7  outputFile=/tmp/amassiro/latinosYieldSkim_MC_WWmg.root   correctMetPhi=False
 
+
 # step23
 
     cd src/WWAnalysis/AnalysisStep/test/step3
     cmsRun step3.py print inputFiles=file:/tmp/amassiro/latinosYieldSkim_MC_WWmg.root  label=WW id=123456789  scale=1 outputFile=/tmp/amassiro/step3_latinosYieldSkim_MC_WWmg.root
 
+
 # transform latino tree
 
+    cd src/WWAnalysis/AnalysisStep/test/step3
     python ucsd2latino.py /tmp/amassiro/step3_latinosYieldSkim_MC_WWmg.root
+
 
 
