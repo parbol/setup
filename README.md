@@ -66,8 +66,16 @@ If you want to put major changes in externals, please ask for the best way to do
 
 # step23
 
+for MC
+
     cd src/WWAnalysis/AnalysisStep/test/step3
     cmsRun step3.py print inputFiles=file:/tmp/amassiro/latinosYieldSkim_MC_WWmg.root  label=WW id=123456789  scale=1 outputFile=/tmp/amassiro/step3_latinosYieldSkim_MC_WWmg.root
+
+for DATA
+
+    cd src/WWAnalysis/AnalysisStep/test/step3
+    cmsRun step3.py print inputFiles=file:data.root    label=MuEG id=1234 outputFile=latinosStep3_DATA_202075_VBF.root json=certifiedLatinos.53X.Moriond
+
 
 
 # transform latino tree
