@@ -76,6 +76,10 @@ for DATA
     cd src/WWAnalysis/AnalysisStep/test/step3
     cmsRun step3.py print inputFiles=file:data.root    label=MuEG id=1234 outputFile=latinosStep3_DATA_202075_VBF.root json=certifiedLatinos.53X.Moriond
 
+label should be one of the following (used for "trigger" to avoid double counting):
+    'SingleElectron', 'DoubleElectron', 'SingleMuon', 'DoubleMuon', 'MuEG'
+
+
 
 
 # transform latino tree
