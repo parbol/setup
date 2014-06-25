@@ -105,6 +105,14 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
     mv txtFiles.tar.gz $CMSSW_BASE/src/WWAnalysis/AnalysisStep/crab/;
     cd $CURDIR
 
+    echo " - Need to remove some files to ship them when running CRAB";
+
+    rm -rf HiggsAnalysis/CombinedLimit/data/
+    rm -rf HWWAnalysis/ShapeAnalysis/ewksinglet/data/*
+    rm -rf ElectroWeakAnalysis/VPlusJets/test/ClassifierOut/TMVAClassification_*
+    rm -rf WWAnalysis/AnalysisStep/data/BDTWeights/ScalarVsBkg/hzz4l_mH125_BDTG.weights.xml 
+    rm -rf WWAnalysis/AnalysisStep/data/HiggsMassReweighting/*
+
     echo " - for FatJet";
     github-addext latinos/ElectroWeakAnalysis-VPlusJets.git ElectroWeakAnalysis/VPlusJets 
 
