@@ -115,6 +115,9 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
 
     echo " - for FatJet";
     github-addext latinos/ElectroWeakAnalysis-VPlusJets.git ElectroWeakAnalysis/VPlusJets 
+    echo " - remove for for FatJet (not used so far and instable code)";
+    rm -rf  ElectroWeakAnalysis/
+    rm WWAnalysis/AnalysisStep/plugins/PatFatJetBooster.cc
 
     echo "======================================="
     echo " ... Done.                             "
