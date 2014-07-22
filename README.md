@@ -37,6 +37,7 @@ For example:
 And run the setup script 
 
     source LatinosSetup/Setup.sh
+    bash   LatinosSetup/Setup.sh
 
 For datacard maker setup only: 
 
