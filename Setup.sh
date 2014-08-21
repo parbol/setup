@@ -113,7 +113,7 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
     echo "Current Time:" $(date)
     echo "======================================="
 
-elif [[ "$CMSSW_VERSION" == CMSSW_7_0_* ]]; then
+elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
     echo "======================================="
     echo "running with $CMSSW_VERSION - this is an 13 TeV setup!"
     echo "Current Time:" $(date)
