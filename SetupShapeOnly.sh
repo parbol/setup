@@ -30,9 +30,31 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_*_* ]]; then
     echo "Current Time:" $(date)
     echo "======================================="
 
+else if [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
+
+    echo "======================================="
+    echo "  running with $CMSSW_VERSION - this is an 13 TeV setup!"
+    echo "  Current Time:" $(date)
+    echo "  checking out additional repositories; this could take a while ..."
+    echo "  Only shape analysis toolkit will be setup"
+    echo "  Please use Setup.sh for the full package"
+    echo "       export SCRAM_ARCH=???"
+    echo "======================================="
+
+    echo " - Basic Code"
+
+    github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V02-06-00
+
+    echo "======================================="
+    echo " ... Done.                             "
+    echo "Current Time:" $(date)
+    echo "======================================="
+
 else
     echo "======================================="
     echo "You are using release $CMSSW_VERSION which is not supported by this script."
     echo "A with CMSSW_5_*_* release is suggested for shape"
     echo "======================================="
+
+fi;
 fi;
