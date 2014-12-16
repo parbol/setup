@@ -7,7 +7,7 @@ fi
 
 source $CMSSW_BASE/src/LatinosSetup/Functions.sh
 
-if [[ "$CMSSW_VERSION" == CMSSW_5_*_* ]]; then
+if [[ "$CMSSW_VERSION" == CMSSW_5_*_*  ||  "$CMSSW_VERSION" == CMSSW_6_2_* ]]; then
 
     echo "======================================="
     echo "  running with $CMSSW_VERSION - this is an 8 TeV setup!"
@@ -22,8 +22,9 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_*_* ]]; then
 
     github-addext latinos/HWWAnalysis.git HWWAnalysis
 
-    github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V02-06-00
-
+    if [[ "$CMSSW_VERSION" == CMSSW_5_*_* ]]; then
+        github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V02-06-00
+    fi
 
     echo "======================================="
     echo " ... Done.                             "
