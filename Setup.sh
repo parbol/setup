@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ -z $CMSSW_BASE ]; then
     echo "======================================="
     echo "No CMS environment detected; stopping..."
