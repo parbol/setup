@@ -126,6 +126,15 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
 
     github-addext latinos/LatinoTrees.git LatinoTrees
 
+    echo " - Puppi code"
+
+    if [[ "$CMSSW_VERSION" == CMSSW_7_3_* ]]; then
+       git cms-addpkg CommonTools/PileupAlgos
+       git remote add nhan-remote https://github.com/nhanvtran/cmssw.git
+       git fetch nhan-remote puppi-bugfix-for-miniaod
+       git cherry-pick 0585bf21ae098f14f144b9a3d361178e6cc830e6
+    fi
+
 else
     echo "======================================="
     echo "You are using release $CMSSW_VERSION which is not supported by this script."

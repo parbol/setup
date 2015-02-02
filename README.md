@@ -9,7 +9,7 @@ Exactly the same as for CVS (use version 4_2_8 for 7TeV analyses and 5_3_9 for 8
     cmsrel CMSSW_X_Y_Z
     cd CMSSW_X_Y_Z/src
     cmsenv
-
+    git cms-init
 
 # Checkout Code
 
