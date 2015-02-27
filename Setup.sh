@@ -129,6 +129,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
     echo " - Puppi code"
 
     if [[ "$CMSSW_VERSION" == CMSSW_7_3_* ]]; then
+       # jettoolbox
+       git cms-merge-topic alefisico:jetToolbox_73X
+       # puppi       
        git cms-addpkg CommonTools/PileupAlgos
        git remote add nhan-remote https://github.com/nhanvtran/cmssw.git
        git fetch nhan-remote puppi-bugfix-for-miniaod
