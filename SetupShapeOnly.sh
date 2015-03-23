@@ -43,7 +43,9 @@ else if [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
 
     echo " - Basic Code"
 
-    github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V02-06-00
+#     github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V02-06-00
+
+    github-addext latinos/LatinoAnalysis.git LatinoAnalysis
 
     echo "======================================="
     echo " ... Done.                             "

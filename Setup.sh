@@ -125,6 +125,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
     echo " - Basic Code"
 
     github-addext latinos/LatinoTrees.git LatinoTrees
+    github-addext latinos/LatinoAnalysis.git LatinoAnalysis
 
     echo " - Puppi code"
 
