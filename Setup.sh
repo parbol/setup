@@ -131,12 +131,18 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
 
     if [[ "$CMSSW_VERSION" == CMSSW_7_3_* ]]; then
        # jettoolbox
-       git cms-merge-topic alefisico:jetToolbox_73X
+       #git cms-merge-topic alefisico:jetToolbox_73X
        # puppi       
+       #git cms-addpkg CommonTools/PileupAlgos
+       #git remote add nhan-remote https://github.com/nhanvtran/cmssw.git
+       #git fetch nhan-remote puppi-bugfix-for-miniaod
+       #git cherry-pick 0585bf21ae098f14f144b9a3d361178e6cc830e6
        git cms-addpkg CommonTools/PileupAlgos
        git remote add nhan-remote https://github.com/nhanvtran/cmssw.git
-       git fetch nhan-remote puppi-bugfix-for-miniaod
-       git cherry-pick 0585bf21ae098f14f144b9a3d361178e6cc830e6
+       git fetch nhan-remote puppi-with-alphas-73x
+       git checkout -b puppi_dev 58ee8e8a01012601b59b3774e918f36e85f7f7d3
+       git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox
+       git clone git@github.com:cms-jet/JMEValidator.git JMEAnalysis/JMEValidator
     fi
 
 else
