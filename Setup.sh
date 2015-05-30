@@ -145,6 +145,13 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
        git clone git@github.com:cms-jet/JMEValidator.git JMEAnalysis/JMEValidator
     fi
 
+    if [[ "$CMSSW_VERSION" == CMSSW_7_4_* ]]; then
+    
+#        git clone https://github.com/cms-jet/JetToolbox -b jetToolbox_74X JMEAnalysis/JetToolbox
+       git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
+
+    fi
+    
 else
     echo "======================================="
     echo "You are using release $CMSSW_VERSION which is not supported by this script."
