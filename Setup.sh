@@ -151,6 +151,13 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
        git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
 
     fi
+
+    if [[ "$CMSSW_VERSION" == CMSSW_7_5_* ]]; then
+
+       git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
+
+    fi
+
     
 else
     echo "======================================="
