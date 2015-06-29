@@ -150,14 +150,18 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
 #        git clone https://github.com/cms-jet/JetToolbox -b jetToolbox_74X JMEAnalysis/JetToolbox
        git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
 
-       # electron id
-       # see https://twiki.cern.ch/twiki/bin/view/CMS/CutBasedElectronIdentificationRun2#Recipe_for_regular_users_for_74X
-       git cms-merge-topic 9003 #this is the version that is in CMSSW_7_4_X
-       rm -rf RecoEgamma/ElectronIdentification/data
-       git clone https://github.com/cms-data/RecoEgamma-ElectronIdentification.git RecoEgamma/ElectronIdentification/data
-       rm -rf RecoEgamma/PhotonIdentification/data
-       git clone https://github.com/cms-data/RecoEgamma-PhotonIdentification.git RecoEgamma/PhotonIdentification/data
-
+       if [[ "$CMSSW_VERSION" == CMSSW_7_4_4 ]]; then
+ 
+         # electron id
+         # see https://twiki.cern.ch/twiki/bin/view/CMS/CutBasedElectronIdentificationRun2#Recipe_for_regular_users_for_74X
+         git cms-merge-topic 9003 #this is the version that is in CMSSW_7_4_X
+         rm -rf RecoEgamma/ElectronIdentification/data
+         git clone https://github.com/cms-data/RecoEgamma-ElectronIdentification.git RecoEgamma/ElectronIdentification/data
+         rm -rf RecoEgamma/PhotonIdentification/data
+         git clone https://github.com/cms-data/RecoEgamma-PhotonIdentification.git RecoEgamma/PhotonIdentification/data
+         ## only in cmssw releases <=744
+       fi
+         
     fi
 
     if [[ "$CMSSW_VERSION" == CMSSW_7_5_* ]]; then
