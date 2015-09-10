@@ -149,6 +149,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
     
 #        git clone https://github.com/cms-jet/JetToolbox -b jetToolbox_74X JMEAnalysis/JetToolbox
        git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
+       git cms-merge-topic -u cms-met:METCorUnc74X
 
        if [[ "$CMSSW_VERSION" == CMSSW_7_4_4 ]]; then
  
