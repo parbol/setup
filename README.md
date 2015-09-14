@@ -34,7 +34,7 @@ For datacard maker setup only:
     source LatinosSetup/SetupShapeOnly.sh
 
 
-# Commit Changes
+# Commit changes
 
 Make sure you are in the right repository/folder (for WWAnalysis or HWWAnalysis).
 
