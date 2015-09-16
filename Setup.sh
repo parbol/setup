@@ -158,6 +158,10 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
        # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETUncertaintyPrescription#Instructions_for_7_4_X
        git cms-merge-topic -u cms-met:METCorUnc74X
 
+       # (TEMPORARY) Puppi v8 from CMSSW_7_4_6_patch2 (included in CMSSSW from 7_4_11)
+       git cms-addpkg CommonTools/PileupAlgos
+       git cms-merge-topic nhanvtran:puppi-etadep-746p2-v8
+
        if [[ "$CMSSW_VERSION" == CMSSW_7_4_4 ]]; then
  
          # electron id
