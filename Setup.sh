@@ -117,8 +117,8 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_3_* ]]; then
 
 elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
     echo "======================================="
-    echo "running with $CMSSW_VERSION - this is an 13 TeV setup!"
-    echo "Current Time:" $(date)
+    echo "running with $CMSSW_VERSION - this is a 13 TeV setup!"
+    echo "Current time:" $(date)
     echo "checking out additional repositories; this could take a while ..."
     echo "======================================="
 
@@ -126,8 +126,6 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
 
     github-addext latinos/LatinoTrees.git LatinoTrees
     github-addext latinos/LatinoAnalysis.git LatinoAnalysis
-
-    echo " - Puppi code"
 
     if [[ "$CMSSW_VERSION" == CMSSW_7_3_* ]]; then
        # jettoolbox
@@ -145,22 +143,33 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
        git clone git@github.com:cms-jet/JMEValidator.git JMEAnalysis/JMEValidator
     fi
 
-    if [[ "$CMSSW_VERSION" == CMSSW_7_4_* ]]; then
+    if [[ "$CMSSW_VERSION" == CMSSW_7_4_14 ]]; then
+
+	echo " - JetToolbox"
+	git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
+
+	echo " - CutBasedElectronIdentificationRun2"
+	# https://twiki.cern.ch/twiki/bin/viewauth/CMS/CutBasedElectronIdentificationRun2#Recipe_for_regular_users_for_7_4
+	git cms-merge-topic ikrav:egm_id_7.4.12_v1
+
+    elif [[ "$CMSSW_VERSION" == CMSSW_7_4_* ]]; then
     
-#      git clone https://github.com/cms-jet/JetToolbox -b jetToolbox_74X JMEAnalysis/JetToolbox
-       git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
+#       git clone https://github.com/cms-jet/JetToolbox -b jetToolbox_74X JMEAnalysis/JetToolbox
+	git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
 
-       # (TEMPORARY) Get the Spring15 MC and 25ns/50ns data cut-based electron ID
-       # https://twiki.cern.ch/twiki/bin/viewauth/CMS/CutBasedElectronIdentificationRun2#Recipe_for_regular_users_for_747
-       git cms-merge-topic ikrav:egm_id_747_v2
+        # Get the Spring15 MC and 25ns/50ns data cut-based electron ID
+        # https://twiki.cern.ch/twiki/bin/viewauth/CMS/CutBasedElectronIdentificationRun2#Recipe_for_regular_users_for_747
+	git cms-merge-topic ikrav:egm_id_747_v2
 
-       # (TEMPORARY) Include MET without HF
-       # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETUncertaintyPrescription#Instructions_for_7_4_X
-       git cms-merge-topic -u cms-met:METCorUnc74X
+        # (TEMPORARY) Include MET without HF
+        # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETUncertaintyPrescription#Instructions_for_7_4_X
+	git cms-merge-topic -u cms-met:METCorUnc74X
 
-       # (TEMPORARY) Puppi v8 from CMSSW_7_4_6_patch2 (included in CMSSSW from 7_4_11)
-       git cms-addpkg CommonTools/PileupAlgos
-       git cms-merge-topic nhanvtran:puppi-etadep-746p2-v8
+        # (TEMPORARY) Puppi v8 from CMSSW_7_4_6_patch2 (included in CMSSSW from 7_4_11)
+        echo " - Puppi code"
+
+	git cms-addpkg CommonTools/PileupAlgos
+	git cms-merge-topic nhanvtran:puppi-etadep-746p2-v8
 
        if [[ "$CMSSW_VERSION" == CMSSW_7_4_4 ]]; then
  
