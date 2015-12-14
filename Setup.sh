@@ -155,15 +155,15 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
     elif [[ "$CMSSW_VERSION" == CMSSW_7_6_* ]]; then
 
         echo " - JetToolbox"
-        git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
+#         git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
+        git clone git@github.com:cms-jet/JetToolbox.git -b master JMEAnalysis/JetToolbox
 
         echo " - CutBasedElectronIdentificationRun2"
         # https://twiki.cern.ch/twiki/bin/viewauth/CMS/CutBasedElectronIdentificationRun2#Recipe_for_regular_users_for_7_4
-        git cms-merge-topic ikrav:egm_id_7.4.12_v1
+        # git cms-merge-topic ikrav:egm_id_7.4.12_v1
 
     elif [[ "$CMSSW_VERSION" == CMSSW_7_4_* ]]; then
     
-#       git clone https://github.com/cms-jet/JetToolbox -b jetToolbox_74X JMEAnalysis/JetToolbox
 	git clone git@github.com:cms-jet/JetToolbox.git -b jetToolbox_74X JMEAnalysis/JetToolbox
 
         # Get the Spring15 MC and 25ns/50ns data cut-based electron ID
