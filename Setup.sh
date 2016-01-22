@@ -166,6 +166,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
         
         echo " - JetToolbox"
         git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_763
+        git remote add btv-cmssw https://github.com/cms-btv-pog/cmssw.git
+        git fetch --tags btv-cmssw
+        git cms-merge-topic cms-btv-pog:fixTMVAEvaluatorMemoryProblem-from-CMSSW_7_6_3
         echo " - everything is ready ... "
 
         
