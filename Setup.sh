@@ -210,6 +210,17 @@ elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
 
     fi
 
+elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
+    echo "======================================="
+    echo "running with $CMSSW_VERSION - this is a 13 TeV setup!"
+    echo "Current time:" $(date)
+    echo "checking out additional repositories; this could take a while ..."
+    echo "======================================="
+
+    echo " - Basic Code"
+
+    github-addext latinos/LatinoTrees.git LatinoTrees
+    github-addext latinos/LatinoAnalysis.git LatinoAnalysis
     
 else
     echo "======================================="
