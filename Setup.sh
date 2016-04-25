@@ -221,6 +221,10 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 
     github-addext latinos/LatinoTrees.git LatinoTrees
     github-addext latinos/LatinoAnalysis.git LatinoAnalysis
+
+    # https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetToolbox#How_to_run_the_jetToolbox
+    echo " - JetToolbox"
+    git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_763_v01
     
 else
     echo "======================================="
