@@ -30,7 +30,7 @@ if [[ "$CMSSW_VERSION" == CMSSW_5_*_* ]]; then
     echo "Current Time:" $(date)
     echo "======================================="
 
-else if [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
+elif [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
 
     echo "======================================="
     echo "  running with $CMSSW_VERSION - this is an 13 TeV setup!"
@@ -43,14 +43,31 @@ else if [[ "$CMSSW_VERSION" == CMSSW_7_*_* ]]; then
 
     echo " - Basic Code"
 
-#     github-addext latinos/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit HiggsAnalysis-CombinedLimit-V02-06-00
-
     github-addext latinos/LatinoAnalysis.git LatinoAnalysis
+
+    echo " - Setup MELA"
+    git clone git@github.com:cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
+    source ZZMatrixElement/setup.sh -j 12
 
     echo "======================================="
     echo " ... Done.                             "
     echo "Current Time:" $(date)
     echo "======================================="
+
+elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
+    echo "======================================="
+    echo "running with $CMSSW_VERSION - this is a 13 TeV setup!"
+    echo "Current time:" $(date)
+    echo "checking out additional repositories; this could take a while ..."
+    echo "======================================="
+
+    echo " - Basic Code"
+
+    github-addext latinos/LatinoAnalysis.git LatinoAnalysis
+
+    echo " - Setup MELA"
+    git clone git@github.com:cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
+    source ZZMatrixElement/setup.sh -j 12
 
 else
     echo "======================================="
@@ -58,5 +75,4 @@ else
     echo "A with CMSSW_5_*_* release is suggested for shape"
     echo "======================================="
 
-fi;
 fi;
