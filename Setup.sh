@@ -219,8 +219,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 
     echo " - Basic Code"
 
-    github-addext latinos/LatinoTrees.git LatinoTrees
-    github-addext latinos/LatinoAnalysis.git LatinoAnalysis
+    github-addext latinos/LatinoTrees.git         LatinoTrees
+    github-addext latinos/LatinoAnalysis.git      LatinoAnalysis
+    github-addext latinos/PlotsConfigurations.git PlotsConfigurations
 
     # https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetToolbox#How_to_run_the_jetToolbox
     echo " - JetToolbox"
