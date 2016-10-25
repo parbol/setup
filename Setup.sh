@@ -225,7 +225,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 
     # https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetToolbox#How_to_run_the_jetToolbox
     echo " - JetToolbox"
-    git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_763_v01
+    git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_80X_V2
     
 else
     echo "======================================="
