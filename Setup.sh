@@ -227,6 +227,10 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
     echo " - JetToolbox"
     git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_80X_V2
     
+    if [[ "$CMSSW_VERSION" == CMSSW_8_0_2? ]]; then
+        echo " - MET corrections"
+        git cms-merge-topic cms-met:METRecipe_8020
+    fi
 else
     echo "======================================="
     echo "You are using release $CMSSW_VERSION which is not supported by this script."
