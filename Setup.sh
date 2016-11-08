@@ -228,6 +228,8 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
     git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_80X_V2
     
     if [[ "$CMSSW_VERSION" == CMSSW_8_0_2? ]]; then
+        echo " - MET filters"
+	git cms-merge-topic -u cms-met:CMSSW_8_0_X-METFilterUpdate
         echo " - MET corrections"
         git cms-merge-topic cms-met:METRecipe_8020
     fi
