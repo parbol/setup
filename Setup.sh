@@ -232,6 +232,15 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 	git cms-merge-topic -u cms-met:CMSSW_8_0_X-METFilterUpdate
         echo " - MET corrections"
         git cms-merge-topic cms-met:METRecipe_8020
+
+	echo " - Electron MVA ID"
+	git cms-merge-topic ikrav:egm_id_80X_v2
+        scram b -j 10
+        cd $CMSSW_BASE/external/*
+        git clone https://github.com/ikrav/RecoEgamma-ElectronIdentification.git data/RecoEgamma/ElectronIdentification/data
+        cd data/RecoEgamma/ElectronIdentification/data
+        git checkout egm_id_80X_v1
+        cd $CMSSW_BASE/src
     fi
 else
     echo "======================================="
