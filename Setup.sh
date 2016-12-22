@@ -253,7 +253,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 	cd RecoBTag/DeepFlavour/data/
 	wget http://home.fnal.gov/~verzetti//DeepFlavour/training/DeepFlavourNoSL.json
 	cd $CMSSW_BASE/src
-
+        
+        # Temporary fix for EGMRegression with VID ID combination
+        sed -i 's/processName=cms.InputTag.skipCurrentProcess()/""/' RecoEgamma/ElectronIdentification/python/ElectronMVAValueMapProducer_cfi.py
     fi
 else
     echo "======================================="
