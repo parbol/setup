@@ -225,9 +225,14 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 
     # https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetToolbox#How_to_run_the_jetToolbox
     echo " - JetToolbox"
-    git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_80X_V2
+    git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_80X_V3
     
-    if [[ "$CMSSW_VERSION" == CMSSW_8_0_2? ]]; then
+    if [[ "$CMSSW_VERSION" == CMSSW_8_0_24_patch1 ]]; then
+        echo " - EGMRegression"
+        git cms-merge-topic rafaellopesdesa:Regression80XEgammaAnalysis
+    fi
+
+    if [[ "$CMSSW_VERSION" == CMSSW_8_0_2* ]]; then
         echo " - MET filters"
 	git cms-merge-topic -u cms-met:CMSSW_8_0_X-METFilterUpdate
         echo " - MET corrections"
@@ -248,6 +253,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 	cd RecoBTag/DeepFlavour/data/
 	wget http://home.fnal.gov/~verzetti//DeepFlavour/training/DeepFlavourNoSL.json
 	cd $CMSSW_BASE/src
+
     fi
 else
     echo "======================================="
