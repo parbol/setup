@@ -73,8 +73,8 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
     echo " - Setup MELA"
     git clone git@github.com:cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
     cd ZZMatrixElement
-    echo " checking out MELA release v2.0.1.b2 ..."
-    git checkout tags/v2.0.1.b2
+    echo " checking out MELA release v2.0.1.b3 ..."
+    git checkout tags/v2.0.1.b3
     cd -
     echo " ...done."
     source ZZMatrixElement/setup.sh -j 12
