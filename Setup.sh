@@ -233,6 +233,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
     fi
 
     if [[ "$CMSSW_VERSION" == CMSSW_8_0_2* ]]; then
+        echo " - Template cross section tools "
+        git cms-merge-topic -u perrozzi:HTXS_clean
+
         echo " - MET filters"
 	git cms-merge-topic -u cms-met:CMSSW_8_0_X-METFilterUpdate
         echo " - MET corrections"
