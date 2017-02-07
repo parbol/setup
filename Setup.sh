@@ -238,7 +238,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
         git cms-merge-topic -u perrozzi:HTXS_clean
 
         echo " - MET filters"
-        if $(( version >= 26 )); then
+        if (( "$version" >= "26" )); then
             git cms-merge-topic -u cms-met:fromCMSSW_8_0_20_postICHEPfilter
         else 
 	    git cms-merge-topic -u cms-met:CMSSW_8_0_X-METFilterUpdate
@@ -264,7 +264,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 	cd $CMSSW_BASE/src
         
         # Temporary fix for EGMRegression with VID ID combination
-        if $(( version < 26 )); then
+        if (( "$version" < "26" )); then
             sed -i 's/processName=cms.InputTag.skipCurrentProcess()/""/' RecoEgamma/ElectronIdentification/python/ElectronMVAValueMapProducer_cfi.py
         fi
     fi
