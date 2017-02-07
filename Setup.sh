@@ -233,11 +233,17 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
     fi
 
     if [[ "$CMSSW_VERSION" == CMSSW_8_0_2* ]]; then
+        version=`echo $CMSSW_VERSION |  cut -d "_" -f 4`
         echo " - Template cross section tools "
         git cms-merge-topic -u perrozzi:HTXS_clean
 
         echo " - MET filters"
-	git cms-merge-topic -u cms-met:CMSSW_8_0_X-METFilterUpdate
+        if $(( version >= 26 )); then
+            git cms-merge-topic -u cms-met:fromCMSSW_8_0_20_postICHEPfilter
+        else 
+	    git cms-merge-topic -u cms-met:CMSSW_8_0_X-METFilterUpdate
+        fi
+
         echo " - MET corrections"
         git cms-merge-topic cms-met:METRecipe_8020
 
@@ -258,7 +264,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 	cd $CMSSW_BASE/src
         
         # Temporary fix for EGMRegression with VID ID combination
-        sed -i 's/processName=cms.InputTag.skipCurrentProcess()/""/' RecoEgamma/ElectronIdentification/python/ElectronMVAValueMapProducer_cfi.py
+        if $(( version < 26 )); then
+            sed -i 's/processName=cms.InputTag.skipCurrentProcess()/""/' RecoEgamma/ElectronIdentification/python/ElectronMVAValueMapProducer_cfi.py
+        fi
     fi
 else
     echo "======================================="
