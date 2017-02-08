@@ -236,12 +236,13 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
         version=`echo $CMSSW_VERSION |  cut -d "_" -f 4`
         echo " - Template cross section tools "
         git cms-merge-topic -u perrozzi:HTXS_clean
-
+      
         echo " - MET filters"
-        if (( "$version" >= "26" )); then
-            git cms-merge-topic -u cms-met:fromCMSSW_8_0_20_postICHEPfilter
-        else 
+        if (( "$version" < "26" )); then
 	    git cms-merge-topic -u cms-met:CMSSW_8_0_X-METFilterUpdate
+#        else
+#            extra MET filters not used for now
+#            git cms-merge-topic -u cms-met:fromCMSSW_8_0_20_postICHEPfilter
         fi
 
         echo " - MET corrections"
@@ -249,10 +250,15 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 
 	echo " - Electron MVA ID"
 	git cms-merge-topic ikrav:egm_id_80X_v2
+        git cms-merge-topic ikrav:egm_id_80X_v3_photons
         scram b -j 10
         cd $CMSSW_BASE/external/*
         git clone https://github.com/ikrav/RecoEgamma-ElectronIdentification.git data/RecoEgamma/ElectronIdentification/data
         cd data/RecoEgamma/ElectronIdentification/data
+        git checkout egm_id_80X_v1
+        cd $CMSSW_BASE/external/*
+        git clone https://github.com/ikrav/RecoEgamma-PhotonIdentification.git data/RecoEgamma/PhotonIdentification/data
+        cd data/RecoEgamma/PhotonIdentification/data
         git checkout egm_id_80X_v1
         cd $CMSSW_BASE/src
 
@@ -265,8 +271,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
         
         # Temporary fix for EGMRegression with VID ID combination
         if (( "$version" < "26" )); then
-            sed -i 's/processName=cms.InputTag.skipCurrentProcess()/""/' RecoEgamma/ElectronIdentification/python/ElectronMVAValueMapProducer_cfi.py
+            git cms-addpkg RecoEgamma/ElectronIdentification            
         fi
+        sed -i 's/processName=cms.InputTag.skipCurrentProcess()/""/' RecoEgamma/ElectronIdentification/python/ElectronMVAValueMapProducer_cfi.py
     fi
 else
     echo "======================================="
