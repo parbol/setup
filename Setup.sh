@@ -270,7 +270,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 	cd $CMSSW_BASE/src
         
         # Temporary fix for EGMRegression with VID ID combination
-        if (( "$version" < "26" )); then
+        if (( "$version" >= "26" )); then
             git cms-addpkg RecoEgamma/ElectronIdentification            
         fi
         sed -i 's/processName=cms.InputTag.skipCurrentProcess()/""/' RecoEgamma/ElectronIdentification/python/ElectronMVAValueMapProducer_cfi.py
