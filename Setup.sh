@@ -249,18 +249,20 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
         git cms-merge-topic cms-met:METRecipe_8020
 
 	echo " - Electron MVA ID"
-	git cms-merge-topic ikrav:egm_id_80X_v2
         git cms-merge-topic ikrav:egm_id_80X_v3_photons
-        scram b -j 10
-        cd $CMSSW_BASE/external/*
-        git clone https://github.com/ikrav/RecoEgamma-ElectronIdentification.git data/RecoEgamma/ElectronIdentification/data
-        cd data/RecoEgamma/ElectronIdentification/data
-        git checkout egm_id_80X_v1
-        cd $CMSSW_BASE/external/*
-        git clone https://github.com/ikrav/RecoEgamma-PhotonIdentification.git data/RecoEgamma/PhotonIdentification/data
-        cd data/RecoEgamma/PhotonIdentification/data
-        git checkout egm_id_80X_v1
-        cd $CMSSW_BASE/src
+        if (( "$version" < "26" )); then
+          git cms-merge-topic ikrav:egm_id_80X_v2
+          scram b -j 10
+          cd $CMSSW_BASE/external/*
+          git clone https://github.com/ikrav/RecoEgamma-ElectronIdentification.git data/RecoEgamma/ElectronIdentification/data
+          cd data/RecoEgamma/ElectronIdentification/data
+          git checkout egm_id_80X_v1
+          cd $CMSSW_BASE/external/*
+          git clone https://github.com/ikrav/RecoEgamma-PhotonIdentification.git data/RecoEgamma/PhotonIdentification/data
+          cd data/RecoEgamma/PhotonIdentification/data
+          git checkout egm_id_80X_v1
+          cd $CMSSW_BASE/src
+        fi
 
 	echo " - DeepCSV " 
 	git cms-merge-topic -u mverzett:DeepFlavour-from-CMSSW_8_0_21
