@@ -245,6 +245,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 #            git cms-merge-topic -u cms-met:fromCMSSW_8_0_20_postICHEPfilter
         fi
 
+        # EGMRegression negative energy fix
+        git cms-merge-topic rafaellopesdesa:RegressionCheckNegEnergy
+
         echo " - MET corrections"
         git cms-merge-topic cms-met:METRecipe_8020
 
