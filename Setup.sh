@@ -249,7 +249,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
         git cms-merge-topic rafaellopesdesa:RegressionCheckNegEnergy
 
         echo " - MET corrections"
-        git cms-merge-topic cms-met:METRecipe_8020
+        git cms-merge-topic cms-met:METRecipe_8020 -u
 
 	echo " - Electron MVA ID"
         git cms-merge-topic ikrav:egm_id_80X_v3_photons
