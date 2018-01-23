@@ -70,11 +70,14 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 
     github-addext latinos/LatinoAnalysis.git LatinoAnalysis
 
+    echo " - get recaster for MELA"
+    git clone git@github.com:usarica/MelaAnalytics.git
+
     echo " - Setup MELA"
     git clone git@github.com:cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
     cd ZZMatrixElement
-    echo " checking out MELA release v2.0.1 ..."
-    git checkout tags/v2.0.1
+    echo " checking out MELA release v2.1.1 ..."
+    git checkout tags/v2.1.1
     cd -
     echo " ...done."
     source ZZMatrixElement/setup.sh -j 12
