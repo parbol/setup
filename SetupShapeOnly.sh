@@ -111,6 +111,27 @@ elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     git checkout 2.0.2 2>/dev/null
     ./mkLinkDef.py --cmssw
 
+elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
+    echo "======================================="
+    echo "running with $CMSSW_VERSION - this is a 13 TeV setup!"
+    echo "Current time:" $(date)
+    echo "checking out additional repositories; this could take a while ..."
+    echo "======================================="
+
+    echo " - Basic Code"
+
+    github-addext latinos/LatinoAnalysis.git LatinoAnalysis
+
+    echo " - Nano Tools"
+
+    git clone git@github.com:cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools 
+
+    echo " - Plotting Tools"
+
+    git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
+    cd LatinoAnalysis/MultiDraw
+    git checkout 2.0.2 2>/dev/null
+    ./mkLinkDef.py --cmssw
 
 else
     echo "======================================="
