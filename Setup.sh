@@ -298,6 +298,23 @@ elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     echo " - JetToolbox"
     git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_91X_v1
 
+elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
+    echo "======================================="
+    echo "running with $CMSSW_VERSION - this is a 13 TeV setup!"
+    echo "Current time:" $(date)
+    echo "checking out additional repositories; this could take a while ..."
+    echo "======================================="
+
+    echo " - Basic Code"
+
+    github-addext latinos/LatinoTrees.git         LatinoTrees
+    github-addext latinos/LatinoAnalysis.git      LatinoAnalysis
+    github-addext latinos/PlotsConfigurations.git PlotsConfigurations
+
+    # https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetToolbox#How_to_run_the_jetToolbox
+    echo " - JetToolbox"
+    git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_91X_v1
+
 else
     echo "======================================="
     echo "You are using release $CMSSW_VERSION which is not supported by this script."
