@@ -82,6 +82,13 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
     echo " ...done."
     source ZZMatrixElement/setup.sh -j 12
 
+    echo " - Plotting Tools"
+
+    git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
+    cd LatinoAnalysis/MultiDraw
+    git checkout 2.0.2 2>/dev/null
+    ./mkLinkDef.py --cmssw
+
 elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     echo "======================================="
     echo "running with $CMSSW_VERSION - this is a 13 TeV setup!"
@@ -96,6 +103,13 @@ elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     echo " - Nano Tools"
 
     git clone git@github.com:cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools 
+
+    echo " - Plotting Tools"
+
+    git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
+    cd LatinoAnalysis/MultiDraw
+    git checkout 2.0.2 2>/dev/null
+    ./mkLinkDef.py --cmssw
 
 
 else
