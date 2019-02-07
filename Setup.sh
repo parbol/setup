@@ -281,6 +281,13 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
         sed -i 's/processName=cms.InputTag.skipCurrentProcess()/""/' RecoEgamma/ElectronIdentification/python/ElectronMVAValueMapProducer_cfi.py
     fi
 
+    echo " - Plotting Tools"
+
+    git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
+    cd LatinoAnalysis/MultiDraw
+    git checkout 2.0.5 2>/dev/null
+    ./mkLinkDef.py --cmssw
+
 elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     echo "======================================="
     echo "running with $CMSSW_VERSION - this is a 13 TeV setup!"
@@ -297,6 +304,13 @@ elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     # https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetToolbox#How_to_run_the_jetToolbox
     echo " - JetToolbox"
     git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_91X_v1
+
+    echo " - Plotting Tools"
+
+    git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
+    cd LatinoAnalysis/MultiDraw
+    git checkout 2.0.5 2>/dev/null
+    ./mkLinkDef.py --cmssw
 
 else
     echo "======================================="
