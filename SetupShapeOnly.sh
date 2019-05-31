@@ -110,6 +110,14 @@ elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     cd LatinoAnalysis/MultiDraw
     git checkout 2.0.5 2>/dev/null
     ./mkLinkDef.py --cmssw
+    cd ../..
+
+    echo " - MELA"
+
+    git clone git@github.com:usarica/MelaAnalytics.git MelaAnalytics
+    cd MelaAnalytics ; git checkout -b from-v11 v1.1 ; cd ..
+    git clone https://github.com/cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
+    cd ZZMatrixElement ; git checkout -b from-v215 v2.1.5 ; source setup.sh -j 12 ; cd ..
 
 elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
     echo "======================================="
