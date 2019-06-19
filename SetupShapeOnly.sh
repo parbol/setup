@@ -89,7 +89,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
     git checkout 2.0.5 2>/dev/null
     ./mkLinkDef.py --cmssw
 
-elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
+elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]] || [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
     echo "======================================="
     echo "running with $CMSSW_VERSION - this is a 13 TeV setup!"
     echo "Current time:" $(date)
@@ -118,28 +118,6 @@ elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     cd MelaAnalytics ; git checkout -b from-v11 v1.1 ; cd ..
     git clone https://github.com/cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
     cd ZZMatrixElement ; git checkout -b from-v215 v2.1.5 ; source setup.sh -j 12 ; cd ..
-
-elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
-    echo "======================================="
-    echo "running with $CMSSW_VERSION - this is a 13 TeV setup!"
-    echo "Current time:" $(date)
-    echo "checking out additional repositories; this could take a while ..."
-    echo "======================================="
-
-    echo " - Basic Code"
-
-    github-addext latinos/LatinoAnalysis.git LatinoAnalysis
-
-    echo " - Nano Tools"
-
-    git clone git@github.com:cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools 
-
-    echo " - Plotting Tools"
-
-    git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
-    cd LatinoAnalysis/MultiDraw
-    git checkout 2.0.5 2>/dev/null
-    ./mkLinkDef.py --cmssw
 
 else
     echo "======================================="
