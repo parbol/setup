@@ -246,9 +246,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
         fi
 
         # EGMRegression negative energy fix
-        # git cms-merge-topic rafaellopesdesa:RegressionCheckNegEnergy
-        # still useful given the other merge for egamma ? It is crashing ad compilation time if left uncommented
-        #
+        git cms-merge-topic rafaellopesdesa:RegressionCheckNegEnergy
 
         echo " - MET corrections"
         git cms-merge-topic cms-met:METRecipe_8020 -u
@@ -287,10 +285,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 
     git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
     cd LatinoAnalysis/MultiDraw
-    git checkout 2.0.5 2>/dev/null
-    #
-    # the version 2.0.7 is using newer c++ code, not ok for 8_X_Y cmssw releases
-    #
+    git checkout 2.0.7 2>/dev/null
     ./mkLinkDef.py --cmssw
 
 elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
