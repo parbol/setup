@@ -115,9 +115,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     echo " - MELA"
 
     git clone git@github.com:usarica/MelaAnalytics.git MelaAnalytics
-    cd MelaAnalytics ; git checkout -b from-v11 v1.1 ; cd ..
+    cd MelaAnalytics ; git checkout -b from-v19 v1.9 ; cd ..
     git clone https://github.com/cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
-    cd ZZMatrixElement ; git checkout -b from-v215 v2.1.5 ; source setup.sh -j 12 ; cd ..
+    cd ZZMatrixElement ; git checkout -b from-v222 v2.2.2 ; source setup.sh -j 12 ; cd ..
 
 elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
     echo "======================================="
