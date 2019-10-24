@@ -140,7 +140,8 @@ elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
     cd LatinoAnalysis/MultiDraw
     git checkout 2.0.8 2>/dev/null
     ./mkLinkDef.py --cmssw
-
+    cd ../../
+    
 else
     echo "======================================="
     echo "You are using release $CMSSW_VERSION which is not supported by this script."

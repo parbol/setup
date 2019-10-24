@@ -29,7 +29,7 @@ And run the setup script
 
     source LatinosSetup/Setup.sh
 
-For datacard maker setup only:
+For datacard maker (and nanoaod post-processing) setup only:
 
     source LatinosSetup/SetupShapeOnly.sh
 
@@ -41,6 +41,8 @@ Make sure you are in the right repository/folder (for WWAnalysis or HWWAnalysis)
 Do a git commit (or maybe git add first; see general git infos).
 
 Make sure everything is how you wanted it (e.g. look at the commit history).
+
+If possible make a pull request.
 
 Do a git push to push the changes to GitHub.
 
@@ -55,4 +57,8 @@ in particular:
     https://github.com/latinos/LatinoTrees/tree/master/AnalysisStep/test
 
 
+# How to perform the post-processing
+
+    https://github.com/latinos/LatinoAnalysis/tree/master/NanoGardener
+    
 
