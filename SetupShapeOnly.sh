@@ -86,7 +86,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_8_*_* ]]; then
 
     git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
     cd LatinoAnalysis/MultiDraw
-    git checkout 2.0.8 2>/dev/null
+    git checkout 2.0.9 2>/dev/null
     ./mkLinkDef.py --cmssw
 
 elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
@@ -115,9 +115,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_9_*_* ]]; then
     echo " - MELA"
 
     git clone git@github.com:usarica/MelaAnalytics.git MelaAnalytics
-    cd MelaAnalytics ; git checkout -b from-v11 v1.1 ; cd ..
+    cd MelaAnalytics ; git checkout -b from-v19 v1.9 ; cd ..
     git clone https://github.com/cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
-    cd ZZMatrixElement ; git checkout -b from-v215 v2.1.5 ; source setup.sh -j 12 ; cd ..
+    cd ZZMatrixElement ; git checkout -b from-v222 v2.2.2 ; source setup.sh -j 12 ; cd ..
 
 elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
     echo "======================================="
@@ -138,10 +138,17 @@ elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
 
     git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
     cd LatinoAnalysis/MultiDraw
-    git checkout 2.0.8 2>/dev/null
+    git checkout 2.0.9 2>/dev/null
     ./mkLinkDef.py --cmssw
     cd ../../
-    
+
+    echo " - MELA"
+
+    git clone git@github.com:usarica/MelaAnalytics.git MelaAnalytics
+    cd MelaAnalytics ; git checkout -b from-v19 v1.9 ; cd ..
+    git clone https://github.com/cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
+    cd ZZMatrixElement ; git checkout -b from-v222 v2.2.2 ; source setup.sh -j 12 ; cd ..
+
 else
     echo "======================================="
     echo "You are using release $CMSSW_VERSION which is not supported by this script."
