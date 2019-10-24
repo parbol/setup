@@ -62,3 +62,8 @@ in particular:
     https://github.com/latinos/LatinoAnalysis/tree/master/NanoGardener
     
 
+# Suggested cmssw version for 13 TeV, Full Run II
+
+    2019, Oct 24:  CMSSW_10_2_15_patch2
+    
+    
