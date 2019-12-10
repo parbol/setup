@@ -128,7 +128,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
 
     echo " - Basic Code"
 
-    github-addext latinos/LatinoAnalysis.git LatinoAnalysis
+    github-addext-http latinos/LatinoAnalysis.git LatinoAnalysis
 
     echo " - Nano Tools"
 
