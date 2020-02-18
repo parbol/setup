@@ -147,7 +147,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
     git clone git@github.com:usarica/MelaAnalytics.git MelaAnalytics
     cd MelaAnalytics ; git checkout -b from-v19 v1.9 ; cd ..
     git clone https://github.com/cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
-    cd ZZMatrixElement ; git checkout -b from-v222 v2.2.2 ; source setup.sh -j 12 ; cd ..
+    cd ZZMatrixElement ; git checkout -b from-v223 v2.2.3 ; source setup.sh -j 12 ; cd ..
 
 else
     echo "======================================="
