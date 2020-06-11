@@ -134,6 +134,7 @@ elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
 
     git clone git@github.com:cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools
     cp LatinoAnalysis/Tools/data/JECs/*txt PhysicsTools/NanoAODTools/data/jme/
+    cp LatinoAnalysis/Tools/data/JECs/*tgz PhysicsTools/NanoAODTools/data/jme/
 
     echo " - Plotting Tools"
 
