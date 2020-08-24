@@ -135,6 +135,9 @@ elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
     git clone git@github.com:cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools
     cp LatinoAnalysis/Tools/data/JECs/*txt PhysicsTools/NanoAODTools/data/jme/
     cp LatinoAnalysis/Tools/data/JECs/*tgz PhysicsTools/NanoAODTools/data/jme/
+    cp LatinoAnalysis/NanoGardener/python/data/Summer16_25nsV1b_MC.tgz PhysicsTools/NanoAODTools/data/jme/ 
+    cp LatinoAnalysis/NanoGardener/python/data/Fall17_V3b_MC.tgz PhysicsTools/NanoAODTools/data/jme/
+    cp LatinoAnalysis/NanoGardener/python/data/Autumn18_V7b_MC.tgz PhysicsTools/NanoAODTools/data/jme/
 
     echo " - Plotting Tools"
 
