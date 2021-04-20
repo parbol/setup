@@ -128,34 +128,26 @@ elif [[ "$CMSSW_VERSION" == CMSSW_10_*_* ]]; then
 
     echo " - Basic Code"
 
-    github-addext latinos/LatinoAnalysis.git LatinoAnalysis
+    git clone -b worker https://github.com/parbol/LatinoAnalysis.git LatinoAnalysis
 
     echo " - Nano Tools"
 
-    git clone git@github.com:cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools
-    cp LatinoAnalysis/Tools/data/JECs/*txt PhysicsTools/NanoAODTools/data/jme/
-    cp LatinoAnalysis/Tools/data/JECs/*tgz PhysicsTools/NanoAODTools/data/jme/
-    cp LatinoAnalysis/NanoGardener/python/data/Summer16_25nsV1b_MC.tgz PhysicsTools/NanoAODTools/data/jme/ 
-    cp LatinoAnalysis/NanoGardener/python/data/Fall17_V3b_MC.tgz PhysicsTools/NanoAODTools/data/jme/
-    cp LatinoAnalysis/NanoGardener/python/data/Autumn18_V7b_MC.tgz PhysicsTools/NanoAODTools/data/jme/
-    cd  PhysicsTools/NanoAODTools
-    git checkout a4b3c03
-    cd -;
-
+    git clone https://github.com/scodella/nanoAOD-tools.git PhysicsTools/NanoAODTools
+ 
     echo " - Plotting Tools"
 
-    git clone git@github.com:yiiyama/multidraw.git LatinoAnalysis/MultiDraw
+    git clone https://github.com/yiiyama/multidraw.git LatinoAnalysis/MultiDraw
     cd LatinoAnalysis/MultiDraw
     git checkout 2.0.12 2>/dev/null
     ./mkLinkDef.py --cmssw
     cd ../..
 
-    echo " - MELA"
-
-    git clone git@github.com:MELALabs/MelaAnalytics.git MelaAnalytics
-    cd MelaAnalytics ; git checkout -b from-v21 v2.1 ; cd ..
-    git clone https://github.com/cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
-    cd ZZMatrixElement ; git checkout -b from-v223 v2.2.3 ; source setup.sh -j 12 ; cd ..
+    #echo " - MELA"
+    #
+    #git clone https://github.com/MELALabs/MelaAnalytics.git MelaAnalytics
+    #cd MelaAnalytics ; git checkout -b from-v21 v2.1 ; cd ..
+    #git clone https://github.com/cms-analysis/HiggsAnalysis-ZZMatrixElement.git ZZMatrixElement
+    #cd ZZMatrixElement ; git checkout -b from-v223 v2.2.3 ; source setup.sh -j 12 ; cd ..
 
 elif [[ "$CMSSW_VERSION" == CMSSW_11_*_* ]]; then
     echo "======================================="
